@@ -1,0 +1,35 @@
+{
+    "name": "gear/gear-bundle",
+    "description": "A simple CMS solution for fun !",
+    "licence": "MIT",
+    "authors": [
+        {
+            "name": "David Jegat",
+            "email": "david.jegat@gmail.com"
+        }
+     ],
+    "require": {
+        "php"                      : ">=5.4",
+        "symfony/symfony"          : ">=2.3",
+        "doctrine/orm"             : ">=2.2.3,<2.4-dev",
+        "doctrine/doctrine-bundle" : "1.2.*",
+        "twig/extensions"          : "1.0.*",
+        "symfony/assetic-bundle"   : "2.3.*"
+    },
+    "require-dev": {
+        "phpspec/phpspec"                : "2.0.*@dev",
+        "whatthejeff/nyancat-scoreboard" : "*",
+        "behat/behat"                    : "*",
+        "behat/symfony2-extension"       : "*",
+        "behat/mink-extension"           : "*",
+        "behat/mink-browserkit-driver"   : "*"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Gear": "" }
+    },
+    "target-dir": "Gear"
+}
