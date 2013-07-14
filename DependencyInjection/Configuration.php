@@ -41,6 +41,10 @@ class Configuration implements ConfigurationInterface
                     ->info('Activate the routing gear loader services')
                     ->defaultValue(true)
                 ->end()
+                ->booleanNode('module')
+                    ->info('Activate the gear module implementation')
+                    ->defaultValue(true)
+                ->end()
             ->end()
         ;
 
