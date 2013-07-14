@@ -19,6 +19,31 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = $this->factory->create();
         $rootNode = $treeBuilder->root('gear');
 
+        $rootNode
+            ->children()
+                ->append($this->getComponentsNode())
+            ->end()
+        ;
+
         return $treeBuilder;
+    }
+
+    public function getComponentsNode()
+    {
+        $builder = $this->factory->create();
+        $node = $builder->root('components');
+
+        $node
+            ->info('Enable/Disable gear components')
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->booleanNode('routing')
+                    ->info('Activate the routing gear loader services')
+                    ->defaultValue(true)
+                ->end()
+            ->end()
+        ;
+
+        return $node;
     }
 }

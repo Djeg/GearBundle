@@ -3,6 +3,7 @@
 namespace spec\Gear\DependencyInjection;
 
 use PhpSpec\ObjectBehavior;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 class ConfigurationSpec extends ObjectBehavior
 {
@@ -14,10 +15,7 @@ class ConfigurationSpec extends ObjectBehavior
     {
         $this->beConstructedWith($treeBuilderFactory);
 
-        $treeBuilderFactory
-            ->create()
-            ->willReturn($treeBuilder)
-        ;
+        $treeBuilderFactory->create()->willReturn(new TreeBuilder);
     }
 
     function it_should_be_initializable()
@@ -39,7 +37,17 @@ class ConfigurationSpec extends ObjectBehavior
 
         $this
             ->getConfigTreeBuilder()
-            ->shouldReturn($treeBuilder)
+            ->shouldHaveType('Symfony\Component\Config\Definition\Builder\TreeBuilder')
+        ;
+    }
+
+    function its_getComponentsNode_should_return_a_valid_node($treeBuilderFactory, $treeBuilder)
+    {
+        $treeBuilderFactory->create()->shouldBeCalled(1);
+
+        $this
+            ->getComponentsNode()
+            ->shouldHaveType('Symfony\Component\Config\Definition\Builder\NodeDefinition')
         ;
     }
 }
